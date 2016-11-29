@@ -5,7 +5,7 @@
 ### 入门
 本规范参考了大量前人的成果.但又不局限于此。本规范没有完全按照Java推荐的命名规则而来，而是结合了自身的实际和许多.NET规范中很多优秀的经验而制定。
 
-### 2.3定义和约定
+### 定义和约定
 
 1. Pascal标记法
 第1个字符大写，其后每个单词的第1个字母大写
@@ -15,7 +15,7 @@
 首先,命名总的原则是名称应该说明“什么”而不是“如何”, 从命名中可以直观看懂其定义和用途（否则必须增加注释说明）；命名要足够长以同其它变量相分别,简要描述其意义,但要足够短以避免太长；类，方法，变量不得用大小写来区分各种实体（eclipse中，在同一目录下，默认排斥以大小写来区分的类名、包名）以下是几个方面的命名规范。
 
 ### 文件命名
-c 类
+ 类
 类的名字必须由大写字母开头而单词中的其他字母均为小写；如果类名称由多个单词组成，则每个单词的首字母均应为大写(UpperCamelCase) 对于继承于Android组件的类命名必须以Android组件结尾。例子：SignInActivity、 SignInFragment、ImageUploaderService、ChangePasswordDialog. 不可以写成: SignInAct、 SignInFrag.
 #### 资源文件
 资源文件名必须由小写字母和下划线组成（lowercase_underscore）
@@ -223,4 +223,5 @@ Instrument i =
 
 ### 参考文献
 [Android开源编程规范]https://source.android.com/source/code-style.html
+
 [Java编程规范说明]
