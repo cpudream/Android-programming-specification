@@ -1,9 +1,6 @@
 
-最近开始玩GitHub欢迎Starts, Forks, Follow
+[最近开始玩GitHub欢迎Starts, Forks, Follow](https://github.com/CPUdream/Android-programming-specification)
 
-[![GitHub stars](https://img.shields.io/github/stars/cesarferreira/dryrun.svg?style=social&label=Star)](https://github.com/CPUdream/dryrun)
-
-[![GitHub forks](https://img.shields.io/github/forks/cesarferreira/dryrun.svg?style=social&label=Fork)](https://github.com/cesarferreira/dryrun/fork) [![GitHub followers](https://img.shields.io/github/followers/cesarferreira.svg?style=social&label=Follow)](https://github.com/cesarferreira/dryrun)
 ## Android编程规范
 ### 入门
 本规范参考了大量前人的成果.但又不局限于此。本规范没有完全按照Java推荐的命名规则而来，而是结合了自身的实际和许多.NET规范中很多优秀的经验而制定。
