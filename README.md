@@ -200,6 +200,7 @@ Instrument i =
 
 ### Strings
 字符串的命名必须是有
+
 | Prefix             | Description                           |
 | -----------------  | --------------------------------------|
 | `error_`             | An error message                      |
