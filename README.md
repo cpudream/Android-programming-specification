@@ -2,6 +2,7 @@
 [最近开始玩GitHub欢迎Starts, Forks, Follow](https://github.com/CPUdream/Android-programming-specification)
 
 ## Android编程规范
+<font color="red">本文会一直更新</font>————看在上帝的份上，维护一份编程规范
 ### 入门
 本规范参考了大量前人的成果.但又不局限于此。本规范没有完全按照Java推荐的命名规则而来，而是结合了自身的实际和许多.NET规范中很多优秀的经验而制定。
 
@@ -212,11 +213,12 @@ Instrument i =
 好像和类的命名一样，后续更新
 
 ### 属性顺序
-1.View id
-2.Style
-3.Layout width and layout height
-4.其他布局属性，按字母排序
-5.其他属性，按字母排序
+
+1. View id
+2. Style
+3. Layout width and layout height
+4. 其他布局属性，按字母排序
+5. 其他属性，按字母排序
 
 ### 建议
 以下内容为建议，由于个人习惯我希望在项目完结时可以在项目之下建立一个doc文件夹把项目需求文件放进去。当然在该文件夹下能用Markdown写一个说明文档最好，文档名字都想好了叫ReadMe.md。该文档包括项目中使用到的最厉害技术、最好的效果也就是GIF图片，还包括项目存在的不足待改进的地方。
