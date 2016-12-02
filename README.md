@@ -2,7 +2,7 @@
 [最近开始玩GitHub欢迎Starts, Forks, Follow](https://github.com/CPUdream/Android-programming-specification)
 
 ## Android编程规范
-<font color="red">本文会一直更新</font>————看在上帝的份上，维护一份编程规范
+本文会一直更新,后续结合开源项目写一个优雅的项目————看在上帝的份上，维护一份编程规范
 ### 入门
 本规范参考了大量前人的成果.但又不局限于此。本规范没有完全按照Java推荐的命名规则而来，而是结合了自身的实际和许多.NET规范中很多优秀的经验而制定。
 
