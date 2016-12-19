@@ -14,12 +14,37 @@
 第1个字符小写，其后每个单词的第1个字母大写
 
 首先,命名总的原则是名称应该说明“什么”而不是“如何”, 从命名中可以直观看懂其定义和用途（否则必须增加注释说明）；命名要足够长以同其它变量相分别,简要描述其意义,但要足够短以避免太长；类，方法，变量不得用大小写来区分各种实体（eclipse中，在同一目录下，默认排斥以大小写来区分的类名、包名）以下是几个方面的命名规范。
-
+### 项目架构
+#### 项目包名
+com.公司名称.项目类型.项目名称（全部小写）
+下面只是一个参考：
+我认为不用建立base包，直接把baseActivity放入activity里，把BaseFragment放入fragment里面就好了，因为你base里面根本没有多少个类，在activity里也可以一眼看见
+model: model是模型的意思, 不是所有的model全是Bean， Bean的来源是JavaBean，JavaBean包括toString, equals, hashcode等方法而我们的model中不一定写这些
+api: 网络请求的封装，在这里可以封装ApiResponse(返回实体)类，
+core:是业务层专业叫核心层，比如登陆，注册等也就是MVP中的P层，
+view:自定义View,，
+activity: 为什么不用act,可读性差，
+fragment:同上
+util: 工具类
 ### 文件命名
- 类
-类的名字必须由大写字母开头而单词中的其他字母均为小写；如果类名称由多个单词组成，则每个单词的首字母均应为大写(UpperCamelCase) 对于继承于Android组件的类命名必须以Android组件结尾。例子：SignInActivity、 SignInFragment、ImageUploaderService、ChangePasswordDialog. 不可以写成: SignInAct、 SignInFrag.
+#### 类与接口
+类的名字必须由大写字母开头而单词中的其他字母均为小写；如果类名称由多个单词组成，则每个单词的首字母均应为大写(UpperCamelCase) 对于继承于Android组件的类命名必须以Android组件结尾。例子：SignInActivity、 SignInFragment、ImageUploaderService、ChangePasswordDialog. 不可以写成: SignInAct、 SignInFrag。适配器添加Adapter后缀，等等。实体类则可添加BO的后缀名称，工具类添加util后缀，接口的实现类添加Impl的后缀。接口的命名也一样，比如，我的项目中，接口层的接口后缀都带上了Api，核心层的接口后缀都带Action。
 #### 资源文件
 资源文件名必须由小写字母和下划线组成（lowercase_underscore）
+##### Drawable文件
+资源文件名必须由小写字母和下划线组成（lowercase_underscore）
+前缀{_控件}{_范围}{_后缀}，控件、范围、后缀可选，但控件和范围至少要有一个。
+
+图标类，添加ic前缀
+背景类，添加bg前缀
+分隔类，添加div前缀
+默认类，添加def前缀
+区分状态时，默认状态，添加normal后缀
+区分状态时，按下时的状态，添加pressed后缀
+区分状态时，选中时的状态，添加selected后缀
+区分状态时，不可用时的状态，添加disable后缀
+多种状态的，添加selector后缀（一般为ListView的selector或按钮的selector）
+
 
 | Asset Type   | Prefix            |		Example               |
 |--------------| ------------------|-----------------------------|
@@ -65,6 +90,16 @@ Layout文件一般与我们的Activity等类对应举个例子：SignInActivity.
 | AdapterView item | ---                    | `item_person.xml`             |
 | Partial layout   | ---                    | `partial_stats_bar.xml`       |
 说明：AdapterView必须以item_开头， 当我们创建的布局是其他布局的一部分那么这个Layout必须命名为partial_
+
+#### 动画文件命名
+动画类型_动画方向。
+fade_in，淡入
+fade_out，淡出
+push_down_in，从下方推入
+push_down_out，从下方推出
+slide_in_from_top，从头部滑动进入
+zoom_enter，变形进入
+shrink_to_middle，中间缩小
 
 ### Menu文件
 和Layout文件相似，Menu文件应该是匹配和你的组件。如果我们写了一个menu文件被用在UserActivity, 这个Menu命名为activity_user.xml(不能是menu_user, 因为Android的Menu文件已经放在Menu文件夹下).
@@ -219,6 +254,34 @@ Instrument i =
 3. Layout width and layout height
 4. 其他布局属性，按字母排序
 5. 其他属性，按字母排序
+
+### 后台接口要求
+接口不可能一成不变，在不停迭代中，总会发生变化。接口的变化一般会有几种：
+数据的变化，比如增加了旧版本不支持的数据类型
+参数的变化，比如新增了参数
+接口的废弃，不再使用该接口了
+为了适应这些变化，必须得做接口版本的设计。实现上，一般有两种做法：
+
+每个接口有各自的版本，一般为接口添加个version的参数。
+大部分情况下会采用第一种方式，当某一个接口有变动时，在这个接口上叠加版本号，并兼容旧版本。App的新版本开发传参时则将传入新版本的version。
+
+有时候，一个接口的变动还会影响到其他接口，但做的时候不一定能发现。因此，最好还要有一套完善的测试机制保证每次接口变更都能测试到所有相关层面。
+
+{"code": "0", "msg": "success"}
+{"code": "0", "msg": "success", "obj":{...}}
+{"code": "0", "msg": "success", "objList":[{...}, {...}], "currentPage": 1, "pageSize": 20, "maxCount": 2, "maxPage": 1}
+code: 返回码，0表示成功，非0表示各种不同的错误
+message: 描述信息，成功时为"success"，错误时则是错误信息
+data: 成功时返回的数据，类型为对象或数组
+不同错误需要定义不同的返回码，属于客户端的错误和服务端的错误也要区分，比如1XX表示客户端的错误，2XX表示服务端的错误。这里举几个例子：
+0：成功
+100：请求错误
+101：缺少appKey
+102：缺少签名
+103：缺少参数
+200：服务器出错
+201：服务不可用
+202：服务器正在重启
 
 ### 建议
 以下内容为建议，由于个人习惯我希望在项目完结时可以在项目之下建立一个doc文件夹把项目需求文件放进去。当然在该文件夹下能用Markdown写一个说明文档最好，文档名字都想好了叫ReadMe.md。该文档包括项目中使用到的最厉害技术、最好的效果也就是GIF图片，还包括项目存在的不足待改进的地方。
