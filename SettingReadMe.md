@@ -1,4 +1,4 @@
-### Android配置
+### AndroidStudio配置说明
 1. 禁止AndroidStudio默认打开最后一次的项目
 2. 修改字体有 source pro 字号为14
 3. 给接口，类添加开源注释模板
